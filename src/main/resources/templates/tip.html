@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill with Tip</title>
+</head>
+<body>
+
+<div method="post">
+<label> Bill: </label>
+<p th:type="decimal" th:name="${totalBill}"></p>
+
+<label> Tip Percentage: </label>
+<p th:type="number" th:name="${tipPercentage}">%</p>
+
+<label>Number of people splitting the bill: </label>
+<p th:type="number" th:name="${splitNum}"></p>
+
+<label> Tip: </label>
+<p th:type="decimal" th:name="${tip}"></p>
+<lable>Total with Tip: </lable>
+<p th:type="decimal" th:name="${totalPlusTip}"></p>
+
+</div>
+</body>
+</html>

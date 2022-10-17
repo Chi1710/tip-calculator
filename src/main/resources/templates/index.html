@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Tip Calculator</title>
+</head>
+<body>
+
+<form method="post">
+
+    <label>
+        Total Bill:
+        <input th:type="decimal" th:min="0" th:name="${totalBill}">
+    </label>
+
+    <label>Tip Percentage:
+    <input th:type="number" th:min="10" th:max="100" th:name="${tipPercentage}">
+    </label>
+
+    <label>How many are splitting the bill:
+        <input th:type="number" th:min="0" th:name="${splitNum}">
+    </label>
+
+ <input th:type="submit" th:value="submitButton" >
+
+</form>
+
+
+
+
+</body>
+</html>
