@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping
@@ -14,10 +15,10 @@ public class TipController {
     private static Double totalBill;
     private static Integer tipPercentage;
     private static Integer splitNum;
-    private static Double tipAmount;
+//    private static Double tipAmount;
 
 
-    @GetMapping("")
+    @GetMapping("tip")
     public String displayBillAndTipPercentage(@NotNull Model model){
         model.addAttribute("totalBill", totalBill);
         model.addAttribute("tipPercentage", tipPercentage);
@@ -25,17 +26,18 @@ public class TipController {
         return "index";
     }
 
-    @PostMapping("")
-    public String processBillAndTipPercentage(Model model, Double totalBill,
-                                              Integer tipPercentage, Integer splitNum) {
+    @PostMapping("tip")
+    public String processBillAndTipPercentage(@RequestParam Double totalPlusTip,
+                                              Model model, Double totalBill,
+                                              Integer tipPercentage, Integer splitNum,
+                                              Double tip,
+                                              Double tipAmount) {
         
-        Double tipAmount = (double) (Math.round((totalBill * tipPercentage / 100) * 100 / 100));
+        tipAmount = (double) (Math.round((totalBill * tipPercentage / 100) * 100 / 100));
 
-        double tip;
         if (splitNum > 0 ) {
             tip = (double) Math.round((tipAmount / splitNum) * 100 / 100);
             double total = Math.round((totalBill / splitNum) * 100 / 100);
-            double totalPlusTip;
             totalPlusTip = tip + total;
 
             model.addAttribute("tip", tip);

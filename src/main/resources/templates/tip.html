@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <title>Bill with Tip</title>
 </head>
-<body>
+<body class="container">
 
-<div method="post">
 <label> Bill: </label>
-<p th:type="decimal" th:name="${totalBill}"></p>
+<p th:type="decimal" th:text="${totalBill}"></p>
 
 <label> Tip Percentage: </label>
-<p th:type="number" th:name="${tipPercentage}">%</p>
+<p th:type="number" th:text="${tipPercentage}">%</p>
 
 <label>Number of people splitting the bill: </label>
-<p th:type="number" th:name="${splitNum}"></p>
+<p th:type="number" th:text="${splitNum}"></p>
 
 <label> Tip: </label>
-<p th:type="decimal" th:name="${tip}"></p>
+<p th:type="decimal" th:text="${tip}"></p>
 <lable>Total with Tip: </lable>
-<p th:type="decimal" th:name="${totalPlusTip}"></p>
+<p th:type="decimal" th:text="${totalPlusTip}"></p>
 
-</div>
+
 </body>
 </html>
