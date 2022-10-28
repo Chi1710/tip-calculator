@@ -18,32 +18,35 @@ public class TipController {
 //    private static Double tipAmount;
 
 
-    @GetMapping("tip")
-    public String displayBillAndTipPercentage(@NotNull Model model){
+    @GetMapping("")
+    public String displayBillAndTipPercentage(Model model){
         model.addAttribute("totalBill", totalBill);
         model.addAttribute("tipPercentage", tipPercentage);
-        model.addAttribute("SplitNum", splitNum);
+        model.addAttribute("splitNum", splitNum);
         return "index";
     }
 
-    @PostMapping("tip")
-    public String processBillAndTipPercentage(@RequestParam Double totalPlusTip,
-                                              Model model, Double totalBill,
-                                              Integer tipPercentage, Integer splitNum,
-                                              Double tip,
-                                              Double tipAmount) {
+    @PostMapping("")
+    public String processBillAndTipPercentage(@RequestParam Double totalBill,
+                                              @RequestParam Integer tipPercentage,
+                                              @RequestParam Integer splitNum,
+                                              Model model) {
         
-        tipAmount = (double) (Math.round((totalBill * tipPercentage / 100) * 100 / 100));
+       Double tipAmount = (double) (Math.round((totalBill * tipPercentage / 100) * 100 / 100));
+
+        model.addAttribute("totalBill", totalBill);
+        model.addAttribute("tipPercentage", tipPercentage);
+        model.addAttribute("splitNum", splitNum);
 
         if (splitNum > 0 ) {
-            tip = (double) Math.round((tipAmount / splitNum) * 100 / 100);
+            Double tip = (double) Math.round((tipAmount / splitNum) * 100 / 100);
             double total = Math.round((totalBill / splitNum) * 100 / 100);
-            totalPlusTip = tip + total;
+            Double totalPlusTip = tip + total;
 
             model.addAttribute("tip", tip);
             model.addAttribute("totalPlusTip", totalPlusTip);
         } else {
-            tip = tipAmount;
+            Double tip = tipAmount;
             double totalPlusBill = tip + totalBill;
             model.addAttribute("totalPlusTip", totalPlusBill);
             model.addAttribute("tip", tip);
