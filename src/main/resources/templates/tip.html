@@ -3,23 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Bill with Tip</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body class="container">
 
-<label> Bill: </label>
-<p th:type="decimal" th:text="${totalBill}"></p>
+<body>
+<div class="container">
 
-<label> Tip Percentage: </label>
-<p th:type="number" th:text="${tipPercentage}">%</p>
+    <h1> Tip Calculation </h1>
 
-<label>Number of people splitting the bill: </label>
-<p th:type="number" th:text="${splitNum}"></p>
+<label> Total Bill: $
+    <span th:type="decimal" th:text="${totalBill}"></span>
+</label>
 
-<label> Tip: </label>
-<p th:type="decimal" th:text="${tip}"></p>
-<lable>Total with Tip: </lable>
-<p th:type="decimal" th:text="${totalPlusTip}"></p>
+<br>
 
+<label> Tip Percentage:
+    <span th:type="number" th:text="${tipPercentage}">%</span> %
+</label>
 
+<br>
+
+<label>Number of people splitting the bill:
+    <span th:type="number" th:text="${splitNum}"></span>
+</label>
+
+<br>
+
+<label>Each person tip: $
+    <span th:type="decimal" th:text="${tip}"></span>
+</label>
+
+<br>
+
+<label>Each person bill with Tip: $
+    <span th:type="decimal" th:text="${totalPlusTip}"></span>
+</label>
+
+</div>
 </body>
 </html>

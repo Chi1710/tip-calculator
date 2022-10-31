@@ -38,6 +38,7 @@ public class TipController {
         model.addAttribute("tipPercentage", tipPercentage);
         model.addAttribute("splitNum", splitNum);
 
+
         if (splitNum > 0 ) {
             Double tip = (double) Math.round((tipAmount / splitNum) * 100 / 100);
             double total = Math.round((totalBill / splitNum) * 100 / 100);

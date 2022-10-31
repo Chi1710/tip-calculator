@@ -3,29 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Tip Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+<div class="container">
+<h1> Tip Calculator </h1>
+</div>
+
+<br>
 <form method="post">
-    <div class="form-group">
+
+        <div class="container">
+            <div class="row">
+                <div class="col align-self-center">
+
+                    <div class="form-group">
     <label>
         Total Bill:
         <input th:type="decimal" th:min="0" th:name="totalBill">
     </label>
-    </div>
+                    </div>
+
     <div class="form-group">
     <label>Tip Percentage:
     <input th:type="number" th:min="10" th:max="100" th:name="tipPercentage">
     </label>
     </div>
+
     <div class="form-group">
     <label>How many are splitting the bill:
         <input th:type="number" th:min="0" th:name="splitNum" >
     </label>
     </div>
+
     <div class="form-group">
  <input th:type="submit" th:value="submitButton" >
     </div>
+
+        </div>
+    </div>
+        </div>
+
 </form>
 
 
